@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>씨스루</title>
+		<style>
+			* { margin : 0; padding: 0;}
+			
+			/************ 선택 화면 ***********/
+			#body {
+				position:absolute;
+				background-color: #171717;
+				top:200px;
+				width:1903px; height:2700px;
+			}
+			
+			.style_image {
+				float:left;
+				width: 250px; height: 380px;
+				background-position : 0 0px;
+				margin-top: 50px;
+				margin-left: 57px;
+				cursor:pointer;
+				opacity : 1;
+			}
+			/************ 선택 화면 끝 ***********/
+			
+			/************ head 부분 ***********/
+			#head {
+				position: fixed;
+				background-color: #000000;
+				width:1903px; height: 200px;
+			}
+			
+			#logo {
+				position:absolute;
+				left:5px; top:0px;
+				width:500px; height:55px;
+				background:url('mainImages/main_logo2.png') no-repeat;
+				background-position : 0 0px;
+				background-size: auto 55px;
+				
+			}
+			
+			#sentence{
+				position: absolute;
+				color: #ffffff;
+				font-family: '나눔고딕 extrabold';
+				font-size: 20px;
+				cursor:pointer;
+				width:500px; height:20px;
+				left: 740px; top: 140px;
+			}
+			
+			#count {
+				position: absolute;
+				color: #ffffff;
+				font-family: '나눔고딕 extrabold';
+				font-size: 50px;
+				left: 930px; top: 65px;
+			}
+			
+			#progress {
+				position: absolute;
+				width:345px; height:5px;
+				left: 780px; top: 170px;
+			} 
+			
+			#bar {
+				position: absolute;
+				width: 0%;
+				height: 100%;
+				background-color:#ffffff;
+			}
+			
+			#finish {
+				position:absolute;
+				left:93%; top:130px;
+				width:220px; height:40px;
+				background:url('mainImages/finish.png') no-repeat;
+				background-position : 0 0px;
+				background-size: auto 90px;
+			}
+			/************ head 부분 끝 ***********/
+		</style>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/styleVars.js"></script>
+		<script>
+			
+			var randResult;
+			var randList;
+			var count = 0;
+			
+			var images = new Array();
+			
+			var chooseStyle = [ ['Street fashion',0], ['Simple & Casual',0], ['Walk wear',0], ['Formal & Classic',0] ]; //street simple walk formal
+			
+			
+			var imageClick = [0,0,0,0,0,0,0,0,0,0,
+							  0,0,0,0,0,0,0,0,0,0,
+							  0,0,0,0,0,0,0,0,0,0,
+							  0,0,0,0,0,0];
+			var maxValue;
+			var favorStyle;
+			var user_name;
+			
+			function fStyle(){
+				var max = 0;
+				var i = 1;
+				for(i = 1 ; i < 4 ; i++){
+					if(Number(chooseStyle[max][1]) < Number(chooseStyle[i][1]))
+						max = i;
+				}
+				
+				favorStyle = chooseStyle[max][0];
+			}
+			
+			function Image(styleNum, style){
+				this.styleNum = styleNum;
+				this.style = style;
+			}
+			randResult = new Array();
+		 	
+		 	
+			function shuffle() { //result배열 섞기
+  					var i = randResult.length - 1;
+  					var s;
+  					while (i>0) {
+  					s = Math.floor(Math.random()*(i+1));
+  					swap(s,i);
+  					i--;
+   					}
+
+	 			function swap(j,k) {
+					var temp = randResult[j];
+					randResult[j] = randResult[k];
+					randResult[k] = temp;
+	 			}
+
+			}
+		 	
+			$(document).ready(function (){
+				var i;
+				var width = 0;
+				var moveBar;
+				var barCount = 0;
+				user_name = decodeURI(location.href.substr(location.href.lastIndexOf('=') + 1));
+				setRand(0,33,9); // street
+				setRand(34,63,9); // simple
+				setRand(64,88,9); // walk
+				setRand(89,103,9); // formal
+				shuffle(); // randResult[] 셔플
+				
+				
+								
+				$('#sentence').html(user_name + "님 마음에 드는 사진 10개를 선택해주세요★");
+				
+				
+				// 선택
+				$('.style_image').each(function(index){
+					
+					$(this).attr('id', index)
+					.css('background', 'url("styleImages/'+ style[randResult[index]][0] + '.jpg") no-repeat')
+					.css('background-size','250px auto')
+					.click(function(){
+						var barCount = 0;
+						var clickImage = $(this).attr('id');
+						
+						if(count < 10 && imageClick[clickImage] == '0'){
+							switch(style[randResult[clickImage]][1]){
+								case 'street' : chooseStyle[0][1]++; break;
+								case 'simple' : chooseStyle[1][1]++; break;
+								case 'walk' : chooseStyle[2][1]++; break;
+								case 'formal' : chooseStyle[3][1]++; break;
+							}
+							
+							$(this).css('opacity', '0.2');	
+							count++;
+							imageClick[clickImage] = 1;
+							moveBar = setInterval(increaseBar,20);
+						}
+						else if(count <= 10 && imageClick[clickImage] == '1'){
+							switch(style[randResult[clickImage]][1]){
+								case 'street' : chooseStyle[0][1]--; break;
+								case 'simple' : chooseStyle[1][1]--; break;
+								case 'walk' : chooseStyle[2][1]--; break;
+								case 'formal' : chooseStyle[3][1]--; break;
+							}
+							$(this).css('opacity', '1');	
+							count--;
+							imageClick[clickImage] = 0;
+							moveBar = setInterval(dicreaseBar,20);
+							
+						}
+						
+						if(count >= 10){
+							$('#finish').css('cursor', 'pointer')
+							.css('backgroundPosition','0 -43px');
+							
+							fStyle();
+							
+							$('#finish').click(function(){
+								location.href = encodeURI("main.html?" + user_name + ":" + favorStyle);
+							});
+							
+						}else{
+							$('#finish').css('cursor', 'default')
+							.css('backgroundPosition','0 0px');
+						}
+						
+						$('#count').html(count);
+						
+					});
+					
+				});
+				
+				
+				// bar 
+				function increaseBar(){
+					if(Number(barCount)>=10){
+						clearInterval(moveBar);
+						barCount=0;
+					}else{
+						width++;
+						barCount++;
+						$('#bar').css('width', width + '%');
+					}
+				}
+				
+				function dicreaseBar(){
+					if(Number(barCount)>=10){
+						clearInterval(moveBar);
+						barCount=0;
+					}else{
+						width--;
+						barCount++;
+						$('#bar').css('width', width + '%');
+					}
+				}
+				
+				
+				
+			});
+			
+		</script>
+	</head>
+	<body >
+		<!----- 선택 할 사진들 ------>
+		<div id="body">
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+			<div class="style_image" ></div>
+		</div>
+		
+		<!----- 선택 할 사진들 끝 ------>
+		
+		<!----- head 부분 ------->
+		<div id="head">
+			<!-- 로고 -->
+			<a href="enter.html"><div id="logo">
+			</div></a>
+			
+			<!-- 선택 count -->
+			<div id="count">
+				0
+			</div>
+			
+			<div id="sentence">
+				<p>마음에 드는 사진 10개를 선택해주세요★</p>
+			</div>
+			
+			<!-- 진행 바 -->
+			<div id="progress">
+				<div id="bar"></div>
+			</div>
+			
+			<!-- 완료 버튼 -->
+			<div id="finish"></div>
+			
+		</div>
+		<!----- head 부분 끝 ------->
+	</body>
+</html>

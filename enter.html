@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>씨스루</title>
+		<style>
+			* { margin:0; padding:0;}
+			/*******슬라이드*******/
+			#slider_canvas {
+            	position: absolute; 
+            	width:100%;
+            }
+			
+			#slider_panel {
+				margin:0 auto;
+				width:450px;
+				height:338px;
+			}
+			#slider_panel img {
+				width:1920px;
+				height:1080px;
+			}
+            #control_panel {
+                list-style-type:none;
+                overflow:hidden;
+				position:absolute;
+				width : 25px;
+				height : 200px;
+				bottom:5px; left:1870px;
+				top:450px;
+				cursor:pointer;
+            }
+            #control_panel li {
+                float: left; padding:0px 2px; margin-right:5px; 
+                z-index:999;
+                width:35px; height:35px;
+                background:url('sliderImages/cnt_bnt4.png') no-repeat;
+                background-position : 0 0px;
+                background-size: 55px auto;
+            }
+           
+            #control_panel li.usl-current-parent { background-position:-28px 0px; }
+            
+			a, a:hover, a:visited { width:10px; height:10px; display:block;}
+			ul li { list-style : none; }
+			/*******슬라이드 끝*******/
+			
+			/*******메인*******/
+			#main {
+				position: absolute;
+				left:0px; top:0px;
+			}	
+			
+			#logo {
+				position:absolute;
+				left:20px; top:20px;
+				width:800px; height:150px;
+				background:url('mainImages/main_logo2.png') no-repeat;
+				background-position : 0 0px;
+				background-size: auto 80px;
+				
+			}
+			
+			#your_style {
+				position:relative;
+				left:65%; top:300px;
+				width:1000px; height:130px;
+				background:url('mainImages/your_style.png') no-repeat;
+				background-position : 0 0px;
+				background-size: auto 50px;
+			}
+			
+			#search {
+				position:absolute;
+				left:88%; top:480px;
+				width:157px; height:78px;
+				background:url('mainImages/search2.png') no-repeat;
+				background-position : 0 0px;
+				background-size: auto 150px;
+				cursor:pointer;
+			}
+			
+			#search:hover{
+				background-position : 0 -75px;	
+			}
+			
+			#name_1 {
+				position:absolute;
+				font-family: '나눔고딕';
+				color : #ffffff;
+				width:500px; height:200px;
+				font-size: 25px;
+				left:850px; top:400px;
+			}
+			#name_input{
+				opacity: 0.35;
+				color : #000000;
+				font-family: '나눔고딕';
+				font-size: 20px;
+				width:100px; height:25px;
+			}
+			/*******메인 끝*******/
+		</style>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="js/jquery.ulslide.js"></script>
+		<script>
+			////////// 슬라이드 /////////
+			$(function() {
+		        $('#slider_panel').ulslide({
+		            statusbar: true,
+		            width: 1920,    //슬라이드배너 가로사이즈
+		            height: 955,     //슬라이드배너 세로사이즈
+		            affect: 'slide',   //'fade'로 변경시 이미지가 투명하게 사라지면서 다음이미지가 보여짐
+		            axis: 'x',        //슬라이드 방향 x=가로, y=세로
+		            navigator: '#control_panel a',  //페이지네이션
+		            duration: 400, 
+		            autoslide: 3000
+		        });
+		    ////////// 슬라이드 끝 /////////
+		    
+		    
+		    ////////// search 버튼 /////////
+		    
+		        $('#search').click(function(){
+		    		var user_name = $('#name_input').val();
+		    		location.href= encodeURI("search.html?user=" + user_name);
+		    	});
+		    	
+		    });
+		    
+		   ////////// search 버튼 끝 /////////
+		    
+		    
+		</script>
+	</head>
+	<body>
+		<!-- 슬라이더 -->
+		<div id="slider_canvas">
+			<!--슬라이드 이미지를 넣는 구간입니다-->
+			<div id="slider_panel">
+				<li><img src="sliderImages/BGI_1.png"></li>
+		        <li><img src="sliderImages/BGI_4.png"></li>
+		        <li><img src="sliderImages/BGI_3.png"></li>
+			</div>
+			<!--슬라이드 컨트롤 버튼 넣는 구간입니다.-->
+			<div id="control_panel">
+		        <li><a href="#1"></a></li>
+		        <li><a href="#2"></a></li>
+		        <li><a href="#3"></a></li>
+		    </div>
+		</div>
+		<!-- 슬라이더 끝-->
+		
+		<!-- 가운데 문구 및 이름 입력창-->
+		<div id="main">
+			<div id="your_style">
+			</div>
+			<div id="logo">
+			</div>
+			<form id="name_1" >
+				이름 : <input id="name_input" value="">
+			</form>
+			
+			<div id="search">
+			</div>
+		</div>
+		<!-- 가운데 문구 및 이름 입력창 끝-->
+	</body>
+</html>

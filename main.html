@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>씨스루</title>
+		<style>
+			* { margin : 0; padding: 0;}
+			
+			/********** head화면 부분 **********/
+			#head {
+				position:fixed;
+				background-color: #000000;
+				width:1920px; height: 100px;
+				font-family: '나눔고딕 extrabold';
+				color: #ffffff;
+			}
+			.menu {
+				position: relative;
+				float: left;
+				left: 1200px; top: 65px;
+				font-size: 25px;
+				margin-right: 25px;
+				cursor:pointer;
+			}
+			
+			#logo {
+				position:absolute;
+				left:5px; top:10px;
+				width:390px; height:75px;
+				background:url('mainImages/main_logo2.png') no-repeat;
+				background-position : 0 0px;
+				background-size: auto 70px;
+			}
+			/********** head화면 부분 끝 **********/
+			
+			/********** 화면 전체 layout **********/
+			#body {
+				position:absolute;
+				background-color: #171717;
+				top:60px;
+				font-family: '나눔고딕 extrabold';
+				color: #ffffff;
+				width:1920px; height:3500px;
+				font-size : 25px;
+				z-index: -3;
+				overflow:hidden;
+			}
+			
+			/********* 관심있는 스타일 *********/
+			#inter_style {
+				position:absolute;
+				width:1920px; height:600px;
+				top : 70px;
+				font-size : 40px;
+				z-index: -2;
+			}
+			
+			#intS_4 {
+				position: absolute;
+				left: 1000px; top :50px;
+				width: 800px; height: 500px;
+				background-position : 0 0px;
+				background-size : auto auto;
+				margin-left: 57px;
+				cursor:pointer;
+				opacity : 0.5;	
+				z-index: -1;
+			}
+			
+			/********* 관심있는 스타일 끝 *********/
+			
+			
+			/********* 추천 코디 *********/
+			#recommend_style {
+				position: absolute;
+				width:4000px; height:600px;
+				left: 0px; top: 670px;
+				color: #ffffff;
+				z-index:-1;
+				
+			}
+			
+			.slide {
+				position:relative;
+				top:30px;
+				left:0px;
+				width:4000px; height:370px;
+				z-index: 0;
+			}
+			
+			.res_coordi {
+				float:left;
+				width: 250px; height: 370px;
+				background-position : 0 0px;
+				margin-top: 0px;
+				margin-left: 5px;
+				cursor:pointer;
+				opacity : 1;
+				
+			}
+			
+			#left_narrow {
+				position: absolute;
+				overflow:hidden;
+				width: 80px; height: 100px;
+				background: url('mainImages/left_narrow.png') no-repeat;
+				background-size: auto 170px;
+				background-position : 0 100px;
+				left: 40px; top: 280px;
+				cursor:pointer;
+				z-index: 1;
+			}
+			
+			
+			
+			#left_narrow:hover{
+				background-position : 0 -80px;	
+			}
+			
+			#right_narrow {
+				position: absolute;
+				overflow:hidden;
+				width: 80px; height: 100px;
+				background: url('mainImages/right_narrow.png') no-repeat;
+				background-size: auto 170px;
+				background-position : 0px 100px;
+				left: 1800px; top: 280px;
+				cursor:pointer;
+				z-index: 1;
+			}
+			
+			#right_narrow:hover{
+				background-position : 0px -80px;	
+			}
+			
+			/********* 추천 코디 끝 *********/
+			
+			/********* 오늘의 코디 **********/
+			#today_coordi {
+				position: absolute;
+				width:4000px; height:650px;
+				left: 0px; top: 1270px;
+				color: #ffffff;
+				z-index:-1;
+			}
+			
+			#slide_left_narrow {
+				position: absolute;
+				overflow:hidden;
+				width: 80px; height: 100px;
+				background: url('mainImages/left_narrow.png') no-repeat;
+				background-size: auto 170px;
+				background-position : 0 100px;
+				left: 40px; top: 360px;
+				cursor:pointer;
+				z-index: 1;
+			}
+			
+			
+			
+			#slide_left_narrow:hover{
+				background-position : 0 -80px;	
+			}
+			
+			#slide_right_narrow {
+				position: absolute;
+				overflow:hidden;
+				width: 80px; height: 100px;
+				background: url('mainImages/right_narrow.png') no-repeat;
+				background-size: auto 170px;
+				background-position : 0px 100px;
+				left: 1800px; top: 360px;
+				cursor:pointer;
+				z-index: 1;
+			}
+			
+			#slide_right_narrow:hover{
+				background-position : 0px -80px;	
+			}
+			
+			#name_1 {
+				position:absolute;
+				font-family: '나눔고딕';
+				color : #ffffff;
+				width:650px; height:35px;
+				font-size: 25px;
+				left:50px; top:150px;
+			}
+			
+			#name_2 {
+				position:absolute;
+				font-family: '나눔고딕';
+				color : #ffffff;
+				width:650px; height:50px;
+				font-size: 25px;
+				left:50px; top:190px;
+			}
+			
+			.select_input{
+				position:absolute;
+				opacity: 0.35;
+				top:5px; left:120px;
+				color : #000000;
+				font-family: '나눔고딕';
+				font-size: 20px;
+				width:100px; height:25px;
+				visibility: hidden;
+				cursor:pointer;
+				
+			}
+		
+			.checkbox {
+				width:20px; height:20px;
+			}
+			
+			#today_coordi_slide {
+				position:relative;
+				top:120px;
+				left:0px;
+				width:5270px; height:370px;
+				z-index: 0;
+			}
+			
+			.today_coordi_image {
+				float:left;
+				width: 250px; height: 370px;
+				background-position : 0 0px;
+				margin-top: 0px;
+				margin-left: 5px;
+				cursor:pointer;
+				opacity : 1;
+				
+			}
+			/********* 오늘의 코디 끝 **********/
+			
+			/********* 추천 브랜드 *********/
+			#recommend_brand {
+				position: absolute;
+				width:4000px; height:400px;
+				left: 0px; top: 1970px;
+				color: #ffffff;
+				z-index:-1;
+			}
+			
+			.res_brand {
+				float:left;
+				width: 384px; height: 35px;
+				background-position : center center;
+				margin-left: 5px;
+				margin-top: 75px;
+				padding-top:20px;
+				font-size: 27px;
+				cursor:pointer;
+				opacity : 1;
+				z-index: 3;
+			}
+			
+			
+			#brand_background {
+				position: absolute;
+				top: 150px;
+				left: 35px;
+				width: 1800px; height : 150px;
+				opacity: 0.3;
+				z-index:-1;
+			}
+			/********* 추천 브랜드 끝 *********/
+			
+			/********* 패션 소식 *********/
+			#fashion_news {
+				position: absolute;
+				width:4000px; height:400px;
+				left: 0px; top: 2320px;
+				color: #ffffff;
+				z-index:-1;
+			}
+			
+			.res_news {
+			    float:left;
+				width: 384px; height: 35px;
+				background-position : center center;
+				margin-left: 5px;
+				margin-top: 75px;
+				padding-top:20px;
+				font-size: 27px;
+				cursor:pointer;
+				opacity : 1;
+			}
+			
+			#fashion_background {
+				position: absolute;
+				top: 150px;
+				left: 35px;
+				width: 1800px; height : 150px;
+				background: url('mainImages/news_background.png') no-repeat;
+				background-size: 1800px 150px;
+				opacity: 0.3;
+				z-index:-1;
+			}
+			/********* 패션 소식 끝 *********/
+			
+			
+			/********* 다른 스타일 *********/
+			#different_styles {
+				position: absolute;
+				width:4000px; height:650px;
+				left: 0px; top: 2670px;
+				color: #ffffff;
+				z-index:-1;
+			}
+			
+			.diff_slide {
+				position:relative;
+				top:400px;
+				left:0px;
+				width:4000px; height:370px;
+				z-index: 0;
+			}
+			
+			
+			
+			.diff_res_coordi {
+				float:left;
+				width: 210px; height: 340px;
+				background-position : 0 0px;
+				margin-top: 0px;
+				margin-left: 5px;
+				margin-right: 20px;
+				cursor:pointer;
+				opacity : 1;
+				
+			}
+			
+			
+			.diff_style {
+				float:left;
+				width: 450px; height: 350px;
+				background-position : center center;
+				margin-left: 5px;
+				margin-right: 150px;
+				padding-top:20px;
+				font-size: 27px;
+				cursor:pointer;
+				opacity : 1;
+				
+			}
+			
+			.different_style_page {
+				position:fixed;
+				visibility: hidden;
+				width:1650px; height:0px;
+				left: 100px; top: 70px;
+				background-color: #000000;
+				font-family: '나눔고딕 extrabold';
+				color: #ffffff;
+				opacity: 1;
+			}
+			
+			.different_style_page_background {
+				position:fixed;
+				visibility: hidden;
+				width:1920px; height:1080px;
+				background-color: #000000;
+				font-family: '나눔고딕 extrabold';
+				color: #ffffff;
+				opacity: 0.75;
+			}
+			
+			#btn{
+				position: absolute;
+				left: 1800px; top: 25px;
+				width: 100px; height: 100px;
+				background: url('mainImages/can_btn.png') no-repeat;
+				background-position : 0px 0px;
+				background-size: auto 40px;
+				cursor:pointer;
+				z-index:3;
+				
+			}
+			/********* 다른 스타일 끝 *********/
+			
+			
+			/********** 풋터 **********/
+			#footer {
+				position: absolute;
+				background-color: #000000;
+				width: 100%; height: 200px; 
+				top: 3295px;
+			}
+			/********** 풋터 끝 **********/
+			
+		</style>
+		
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/styleVars.js"></script>
+		<script>
+			var user_name;
+			var favorStyle;
+			var explain = ["많은 패션은 유명 디자이너의 작품 발표에서 생겨났다." + "<br/><br/>" +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp이것과 달리 일부 젊은층에서 일시적 유행이라고 할 수 있는 거리의 트렌드가 패션의 중심이 될 경우도 있다." + "<br/><br/>" +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp흔히 길거리에서 쉽게 접할 수 있는 사람들의 유행 패션 스타일을 말한다." + "<br/><br/>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp이를 하이 패션이나 톱 패션으로부터 구별하기 위해서 만들어진 용어이다."
+			  ,"격식을 차리지 않는, 무관심한이란 뜻." + "<br/><br/>" +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '경쾌한 옷차림' , '경쾌하게 입을 수 있는 의복', '평상시에 격식에 매이지 아니하고 가볍게 입을 수 있는 옷차림' 등의 의미가 된다."
+			  ,"워킹 룩, 워크 웨어 룩, 퍼티그 룩(fatigue look) 등으로도 불린다." + "<br/><br/>" +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp사무복이나 작업복의 요소를 도입한 패션, 또는 그러한 것의 총칭. " + "<br/><br/>" +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp유럽 민속복으로서의 농민복도 워크 룩에 포함된다. " + "<br/><br/>" +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp워킹 룩(working look)이라고도 한다. " + "<br/><br/>" +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp1975년 파리 프레타포르테(pret-a-porter) 컬렉션에서 성대하게 발표되어 그 이후 전세계적인 붐을 일으키게 되었다."
+			  ,"클래식 이미지에는 소박한 베이직 스타일과 클래식 스타일이 있다. " + "<br/><br/>" +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp전자는 기본적인 스타일로서, 소박한 스웨터, 세미 타이트스커트, 재킷, 테일러드 슈트, 트렌치코트, T셔츠, 청바지 등이 있다. " + "<br/><br/>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp후자는 유행을 많이 따르지 않지만 최고급을 지향하는 스타일로서 샤넬 슈트와 같은 진품의 정장 차림인 오센틱 드레싱, 프레피룩, 리치룩 등이 있다."
+			  ];
+			  
+			var randResult = new Array();
+			var randList;
+			
+			
+			var d_styles = [["street","Street fashion"], ["simple","Simple & Casual"], ["walk","Walk wear"], ["formal","Formal & Classic"]];
+			
+			
+			var menu_name = ["#recommend_style","#today_coordi" ,"#recommend_brand", "#fashion_news", "#different_styles"];
+			
+			
+			$(document).ready(function(){
+				
+				$('.checkbox').click(function(){
+					$('.checkbox').attr("checked",false);
+					$(this).attr("checked", true);
+					switch( $(this).attr("value") ){
+						case 'top' :
+							$('#select_name').html("색상 선택");
+							$('.select_input').css('visibility', 'hidden');
+							$('#select_top').css('visibility', 'visible');
+						break;
+						
+						case 'bottom' :
+							$('#select_name').html("색상 선택");
+							$('.select_input').css('visibility', 'hidden');
+							$('#select_bottom').css('visibility', 'visible');
+						break;
+						
+						case 'shoes' :
+							$('#select_name').html("종류 선택");
+							$('.select_input').css('visibility', 'hidden');
+							$('#select_shoes').css('visibility', 'visible');
+						break;
+					}
+					
+				});
+				
+				$('#select_top').change(function(){
+					changeToday($(this).attr('name'), $(this).val());
+				});
+				
+				$('#select_bottom').change(function(){
+					changeToday($(this).attr('name'),$(this).val());
+				});
+				
+				$('#select_shoes').change(function(){
+					changeToday($(this).attr('name'),$(this).val());
+				});
+				
+				
+				function changeToday(select,value){
+					randResult.length = 0;
+					setRand(1,20,20);
+					$('.today_coordi_image').each(function(index){
+						$(this).attr('id', index)
+						.css('background', 'url("todayImages/'+select+'_'+value+'/'+value+randResult[index] + '.PNG") no-repeat')
+						.css('background-size','250px auto')
+						.hover(
+							function(){
+								$(this).css('background-size', '375px auto').css('height', '555px').css('width', '375px').css('margin-top', '-75px');
+							},
+							function(){
+								$(this).css('background-size', '250px auto').css('height', '370px').css('width', '250px').css('margin-top','0px');
+							}
+						);
+					});
+				}
+				
+		
+				
+				$('.menu').each(function(index){
+					$(this).click(function(){
+						var position = $(menu_name[index]).offset();
+						$('html, body').animate({scrollTop : position.top-80}, 1000);
+					});	
+				});
+				
+				
+				$('.res_slide_btn').click(function(){
+					
+					if($(this).attr('id') == 'right_narrow'){
+						var slideLeft = $('.slide').css('left');
+						var slideLeftNumber = slideLeft.split('p');
+						if(Number(slideLeftNumber[0]) > -1700)
+							$('.slide').animate({left: '-=400px'});
+					}
+					else if($(this).attr('id') == 'left_narrow'){
+						var slideLeft = $('.slide').css('left');
+						var slideLeftNumber = slideLeft.split('p');
+						if(Number(slideLeftNumber[0]) < 0)
+							$('.slide').animate({left: '+=400px'});
+					}
+				});
+				
+				$('.today_slide_btn').click(function(){
+					if($(this).attr('id') == 'slide_right_narrow'){
+						var slideLeft = $('#today_coordi_slide').css('left');
+						var slideLeftNumber = slideLeft.split('p');
+						if(Number(slideLeftNumber[0]) > -3300)
+							$('#today_coordi_slide').animate({left: '-=400px'});
+					}
+					
+					else if($(this).attr('id') == 'slide_left_narrow'){
+						var slideLeft = $('#today_coordi_slide').css('left');
+						var slideLeftNumber = slideLeft.split('p');
+						if(Number(slideLeftNumber[0]) < 0)
+							$('#today_coordi_slide').animate({left: '+=400px'});
+					}
+				});
+				
+				var temp = location.href.split("?");
+				
+				var data = temp[1].split(":");
+				user_name = decodeURI(data[0]);
+				favorStyle = decodeURI(data[1]);
+				
+				$('#intS_1').html("&nbsp;&nbsp" + "#" + user_name + "님이 관심있는 스타일");
+				$('#intS_2').html("&nbsp;&nbsp;&nbsp;&nbsp" + favorStyle + " Style");
+				
+				$('#btn').click(function(){
+					$('.different_style_page_background').css('visibility', 'hidden');
+					$('.different_style_page').css('visibility','hidden');
+				});
+				consMain();
+				
+				
+				function consMain(){
+					switch(favorStyle){
+						case "Street fashion" :
+							setRand(0,33,15);
+							$('#intS_3').html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" + explain[0]);
+							$('#intS_4').css('background', 'url("styles/street.png") no-repeat');
+							recomendCoordi();
+							randResult.length = 0;
+							setRand(0,4,5);
+							
+							break;
+						case "Simple & Casual" :
+							setRand(34,63,15); 
+							$('#intS_3').html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" + explain[1]);
+							$('#intS_4').css('background', 'url("styles/simple.png") no-repeat');
+							recomendCoordi();
+							randResult.length = 0;
+							setRand(5,9,5);
+							
+							break;
+						case "Walk wear" :
+							setRand(64,88,15); 
+							$('#intS_3').html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" + explain[2]);
+							$('#intS_4').css('background', 'url("styles/walk.png") no-repeat');
+							recomendCoordi();
+							randResult.length = 0;
+							setRand(10,14,5);
+							
+							break;
+						case "Formal & Classic" : 
+							setRand(89,103,15);
+							$('#intS_3').html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" + explain[3]);
+							$('#intS_4').css('background', 'url("styles/formal.png") no-repeat');
+							recomendCoordi();
+							randResult.length = 0;
+							setRand(15,19,5);
+							break;
+					}
+					recomendBrand();
+					fashion_news();
+					differentStyle();
+				}
+				
+				function recomendCoordi(){
+					$('.res_coordi').each(function(index){
+						$(this).attr('id', index)
+						.css('background', 'url("styleImages/'+ style[randResult[index]][0] + '.jpg") no-repeat')
+						.css('background-size','250px auto')
+						.hover(
+							function(){
+								$(this).css('background-size', '375px auto').css('height', '555px').css('width', '375px').css('margin-top', '-=75px');
+							},
+							function(){
+								$(this).css('background-size', '250px auto').css('height', '370px').css('width', '250px').css('margin-top','+=75px');
+							}
+						);
+					});
+				}
+				
+				function recomendBrand(){
+					$('.res_brand').each(function(index){
+						$(this).attr('id', index).html(brandImages[randResult[index]][1])
+						.hover(
+							function(){
+								$(this).css('font-size','45px');
+							},
+							function(){
+								$(this).css('font-size','27px');
+							}
+						)
+						.click(function(){
+							location.href = brandImages[randResult[index]][2];
+						});
+					});
+					recomendBackground(favorStyle);
+					
+				}
+				
+				function recomendBackground(favor){
+					$('#brand_background').css('background', 'url("mainImages/'+ favor +'_background.png") no-repeat')
+					.css("background-size", "1800px 150px");
+				}
+				
+				function fashion_news(){
+					$('.res_news').each(function(index){
+						$(this).html(newsImages[index][1])
+						.hover(
+							function(){
+								$(this).css('font-size','45px');
+							},
+							function(){
+								$(this).css('font-size','27px');
+							}
+						)
+						.click(function(){
+							location.href = newsImages[index][2];
+						});
+					});
+				}
+				
+				
+				
+				function differentStyle(){
+					
+					switch(favorStyle){
+							case "Street fashion" :
+								d_styles.splice(0,1);
+							break;
+							case "Simple & Casual" :
+								d_styles.splice(1,1);
+							break;
+							case "Walk wear" :
+								d_styles.splice(2,1);
+							break;
+							case "Formal & Classic" :
+								d_styles.splice(3,1);
+							break; 
+					}
+					
+					$('.diff_style').each(function(index){
+						$(this).attr('id',index)
+						.html(d_styles[index][1])
+						.css('background', 'url("styles/'+ d_styles[index][0] +'.png") no-repeat')
+						.css('background-size', 'auto 300px')
+						.css('background-position', '0 70px')
+						.css('opacity','0.7')
+						.click(function(){
+								switch(favorStyle){
+									case "Street fashion" :
+										if(index == 0){
+											simpleStyle();
+										}
+										else if(index == 1){
+											walkStyle();
+										}else if(index == 2){
+											formalStyle();
+										}
+									break;
+									case "Simple & Casual" :
+										if(index == 0){
+											streetStyle();
+										}
+										else if(index == 1){
+											walkStyle();
+										}else if(index == 2){
+											formalStyle();
+										}
+									break;
+									case "Walk wear" :
+										if(index == 0){
+											streetStyle();
+										}
+										else if(index == 1){
+											simpleStyle();
+										}else if(index == 2){
+											formalStyle();
+										}
+									break;
+									case "Formal & Classic" :
+										if(index == 0){
+											streetStyle();
+										}
+										else if(index == 1){
+											simpleStyle();
+										}else if(index == 2){
+											walkStyle();
+										}
+									break; 
+								}
+						});
+						
+					});
+					
+				}
+				
+				function streetStyle(){
+					$('.different_style_page_background').css('visibility', 'visible');
+					$('.different_style_page').css('visibility', 'visible');
+					$('#diff_style_title').html("&nbsp;&nbsp;&nbsp; Street fashion").css('position','absolute').css('top','0px').css('left','0px').css("font-size","40px");
+					$('#diff_style_explain').html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" + explain[0]).css('position','absolute').css('top','100px').css('left','0px').css("font-size","20px").css("z-index","2");
+					$('#diff_style_image').css('width',"800px").css("height", "500px").css('background', 'url("styles/street.png") no-repeat')
+					.css("background-size", "550px auto").css('position','absolute').css('top','0px').css('left','1100px');
+					
+					randResult.length = 0;
+					setRand(0,33,15);
+					$('.diff_res_coordi').each(function(index){
+						$(this).attr('id', index)
+						.css('background', 'url("styleImages/'+ style[randResult[index]][0] + '.jpg") no-repeat')
+						.css('background-size','220px auto')
+						.hover(
+							function(){
+								$(this).css('background-size', '330px auto').css('height', '555px').css('width', '355px').css('margin-top', '-75px');
+							},
+							function(){
+								$(this).css('background-size', '220px auto').css('height', '340px').css('width', '210px').css('margin-top','0px');
+							}
+						);
+					});
+				}
+				
+				function simpleStyle(){
+					$('.different_style_page_background').css('visibility', 'visible');
+					$('.different_style_page').css('visibility', 'visible');
+					$('#diff_style_title').html("&nbsp;&nbsp;&nbsp; Simple & Casual").css('position','absolute').css('top','0px').css('left','0px').css("font-size","40px");
+					$('#diff_style_explain').html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" + explain[1]).css('position','absolute').css('top','100px').css('left','0px').css("font-size","20px").css("z-index","2");
+					$('#diff_style_image').css('width',"800px").css("height", "500px").css('background', 'url("styles/simple.png") no-repeat')
+					.css("background-size", "550px auto").css('position','absolute').css('top','0px').css('left','1100px');
+					
+					randResult.length = 0;
+					setRand(34,63,15);
+					$('.diff_res_coordi').each(function(index){
+						$(this).attr('id', index)
+						.css('background', 'url("styleImages/'+ style[randResult[index]][0] + '.jpg") no-repeat')
+						.css('background-size','220px auto')
+						.hover(
+							function(){
+								$(this).css('background-size', '330px auto').css('height', '555px').css('width', '355px').css('margin-top', '-75px');
+							},
+							function(){
+								$(this).css('background-size', '220px auto').css('height', '340px').css('width', '210px').css('margin-top','0px');
+							}
+						);
+					});
+				}
+				
+				function walkStyle(){
+					$('.different_style_page_background').css('visibility', 'visible');
+					$('.different_style_page').css('visibility', 'visible');
+					$('#diff_style_title').html("&nbsp;&nbsp;&nbsp; Walk wear").css('position','absolute').css('top','0px').css('left','0px').css("font-size","40px");
+					$('#diff_style_explain').html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" + explain[2]).css('position','absolute').css('top','100px').css('left','0px').css("font-size","20px").css("z-index","2");
+					$('#diff_style_image').css('width',"800px").css("height", "500px").css('background', 'url("styles/walk.png") no-repeat')
+					.css("background-size", "550px auto").css('position','absolute').css('top','0px').css('left','1100px');
+					
+					randResult.length = 0;
+					setRand(64,88,15); 
+					$('.diff_res_coordi').each(function(index){
+						$(this).attr('id', index)
+						.css('background', 'url("styleImages/'+ style[randResult[index]][0] + '.jpg") no-repeat')
+						.css('background-size','220px auto')
+						.hover(
+							function(){
+								$(this).css('background-size', '330px auto').css('height', '555px').css('width', '355px').css('margin-top', '-75px');
+							},
+							function(){
+								$(this).css('background-size', '220px auto').css('height', '340px').css('width', '210px').css('margin-top','0px');
+							}
+						);
+					});
+				}
+				
+				function formalStyle(){
+					$('.different_style_page_background').css('visibility', 'visible');
+					$('.different_style_page').css('visibility', 'visible');
+					$('#diff_style_title').html("&nbsp;&nbsp;&nbsp; Formal & Classic").css('position','absolute').css('top','0px').css('left','0px').css("font-size","40px");
+					$('#diff_style_explain').html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp" + explain[3]).css('position','absolute').css('top','100px').css('left','0px').css("font-size","20px").css("z-index","2");
+					$('#diff_style_image').css('width',"800px").css("height", "500px").css('background', 'url("styles/formal.png") no-repeat')
+					.css("background-size", "550px auto").css('position','absolute').css('top','0px').css('left','1100px');
+					
+					randResult.length = 0;
+					setRand(89,98,15);
+					$('.diff_res_coordi').each(function(index){
+						$(this).attr('id', index)
+						.css('background', 'url("styleImages/'+ style[randResult[index]][0] + '.jpg") no-repeat')
+						.css('background-size','220px auto')
+						.hover(
+							function(){
+								$(this).css('background-size', '330px auto').css('height', '555px').css('width', '355px').css('margin-top', '-75px');
+							},
+							function(){
+								$(this).css('background-size', '220px auto').css('height', '340px').css('width', '210px').css('margin-top','0px');
+							}
+						);
+					});
+				}
+				
+				
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div id="head">
+			<!-- 메인 로고 -->
+			<a href="enter.html"><div id="logo">
+			</div></a>
+			<!-- 메뉴 -->
+			<div class="menu">추천 코디</div>
+			<div class="menu">오늘의 코디</div>
+			<div class="menu">추천 브랜드</div>
+			<div class="menu">패션 소식</div>
+			<div class="menu">다른 스타일</div>
+		</div>
+		<div id="body">
+			<!-- 관심 있는 스타일-->
+			<div id="inter_style">
+				<br/>
+				<h1 id="intS_1"></h1>
+				<br/>
+				<div id="intS_2"></div>
+				<br/>
+				<div id="intS_3" style= " font-size : 20px;"></div>
+				<div id="intS_4"></div>
+			</div>
+			
+			
+			<!-- 추천 코디 -->
+			<div id="recommend_style">
+				<div id="left_narrow" class="res_slide_btn"></div>
+				<div id="right_narrow" class="res_slide_btn"></div>
+				<br/><br/>
+				<h1 id="reS_1">&nbsp;&nbsp;&nbsp;#추천 코디</h1>
+				<div class="slide">
+					<div class="res_coordi" style="margin-left: 40px">&nbsp;&nbsp;&nbsp;</div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+					<div class="res_coordi"></div>
+				</div>
+			</div>
+			
+			<!-- 추천 브랜드 -->
+			<div id="recommend_brand">
+				<br/><br/>
+				<h1 id="reB_1">&nbsp;&nbsp;&nbsp;#추천 브랜드</h1>
+					<div class="res_brand" style="margin-left: 40px">&nbsp;&nbsp;&nbsp;</div>
+					<div class="res_brand"></div>
+					<div class="res_brand"></div>
+					<div class="res_brand"></div>
+					<div class="res_brand"></div>
+					<div id="brand_background"></div>
+			</div>
+			
+			<!-- 패션 소식 -->
+			<div id="fashion_news">
+				<br/><br/>
+				<h1 id="reB_1">&nbsp;&nbsp;&nbsp;#패션 소식</h1>
+					<div class="res_news" style="margin-left: 40px">&nbsp;&nbsp;&nbsp;</div>
+					<div class="res_news"></div>
+					<div class="res_news"></div>
+					<div class="res_news"></div>
+					<div class="res_news"></div>
+					<div id="fashion_background"></div>
+			</div>
+			
+			<!-- 다른 스타일 -->
+			<div id="different_styles">
+				<br/><br/>
+				<h1 id="reB_1">&nbsp;&nbsp;&nbsp;#다른 스타일</h1>
+					<div class="diff_style" style="margin-left: 40px">&nbsp;&nbsp;&nbsp;</div>
+					<div class="diff_style"></div>
+					<div class="diff_style"></div>
+			</div>
+			
+			<!-- 오늘의 코디 -->
+			<div id="today_coordi">
+				<div id="slide_left_narrow" class="today_slide_btn"></div>
+				<div id="slide_right_narrow" class="today_slide_btn"></div>
+				<br/><br/>
+				<h1 id="reB_1">&nbsp;&nbsp;&nbsp;#오늘의 코디</h1>
+				<form id="name_1" >
+					<input type="checkbox" class="checkbox" value="top">&nbsp;상의 &nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" class="checkbox" value="bottom">&nbsp;하의 &nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" class="checkbox" value="shoes">&nbsp;신발 &nbsp;&nbsp;&nbsp;&nbsp;
+				</form>
+				<form id="name_2">
+					
+					<span id="select_name">선택해주세요!</span>
+				    <select class="select_input" id="select_top" name="top">
+						<option class="select_option_top" value="none">--선택--</option>
+						<option class="select_option_top" value="black">BLACK</option>
+						<option class="select_option_top" value="pink">PINK</option>
+						<option class="select_option_top" value="white">WHITE</option>
+					</select>
+					<select class="select_input" id="select_bottom" name="bottom">
+						<option value="none">--선택--</option>
+						<option value="jean">JEAN</option>
+						<option value="beige">BEIGE</option>
+						<option value="black">BLACK</option>
+					</select>
+					<select class="select_input" id="select_shoes" name="shoes">
+						<option value="none">--선택--</option>
+						<option value="sneakers">SNEAKERS</option>
+						<option value="walker">WALKER</option>
+						<option value="sandal">SANDAL</option>
+					</select>
+				</form>
+				<div id="today_coordi_slide">
+					<div class="today_coordi_image" style="margin-left: 40px">&nbsp;&nbsp;&nbsp;</div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+					<div class="today_coordi_image"></div>
+				</div>
+			</div>
+			
+			<footer id="footer">
+				<p style="position: absolute; left: 40%; top: 30px"> FASHION WEB SEETHROUGH</p>
+				<p style="position: absolute; left: 44%; top: 80px; font-size: 20px;"> 오병민 박근태 신정환</p>
+			</footer>
+		</div>
+		
+		<!-- 다른 페이지 -->
+		<div class="different_style_page_background">
+			<div id="btn">
+			</div>
+		</div>
+		<div class="different_style_page">
+			
+			<h1 id="diff_style_title"></h1>
+			<div id="diff_style_explain"></div>
+			<div id="diff_style_image"></div>
+			<div class="diff_slide">
+					<div class="diff_res_coordi" style="margin-left: 40px">&nbsp;&nbsp;&nbsp;</div>
+					<div class="diff_res_coordi"></div>
+					<div class="diff_res_coordi"></div>
+					<div class="diff_res_coordi"></div>
+					<div class="diff_res_coordi"></div>
+					<div class="diff_res_coordi"></div>
+					<div class="diff_res_coordi"></div>
+			</div>
+		</div>
+		
+	</body>
+</html>
